@@ -3,6 +3,7 @@ package org.Lesson4_Maven_Web_test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,11 +49,21 @@ public class TriangleAppTest{
         logger.info("Тест успешен! Пробрасывается ошибка, если одна из сторон отрицательная.");
     }
 
+//    @ParameterizedTest
+//    @CsvSource({ "7,8,30","3,4,20","5,6,15"})
+//    @DisplayName("Тест на проверку подсчёта треугольника треугольника при наличии одной стороны больше, чем сумма двух других.")
+//    void testNotTriangle(int a, int b, int c){
+//        logger.info("Тест на проверку подсчёта треугольника треугольника при наличии одной стороны больше, чем сумма двух других.");
+//        logger.info("Входящие параметры: a = " + a + ", b = " + b + ", c = " + c);
+//        assertThrows(ThisIsNotTriangleException.class, () -> TriangleApp.getSquare(a,b,c));
+//        logger.info("Тест успешен! Пробрасывается ошибка, что такого треугольника не существует.");
+//    }
+
     @ParameterizedTest
-    @CsvSource({ "7,8,30","3,4,20","5,6,15"})
-    @DisplayName("Тест на проверку подсчёта треугольника треугольника при наличии одной стороны больше, чем сумма двух других.")
+    @CsvFileSource(resources = "/InvalidTriangles.csv")
+    @DisplayName("Тест на проверку подсчёта треугольника при наличии одной стороны больше, чем сумма двух других.")
     void testNotTriangle(int a, int b, int c){
-        logger.info("Тест на проверку подсчёта треугольника треугольника при наличии одной стороны больше, чем сумма двух других.");
+        logger.info("Тест на проверку подсчёта треугольника при наличии одной стороны больше, чем сумма двух других.");
         logger.info("Входящие параметры: a = " + a + ", b = " + b + ", c = " + c);
         assertThrows(ThisIsNotTriangleException.class, () -> TriangleApp.getSquare(a,b,c));
         logger.info("Тест успешен! Пробрасывается ошибка, что такого треугольника не существует.");

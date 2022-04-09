@@ -1,0 +1,8 @@
+package org.example;
+
+public class ThisIsNotTriangleException extends Exception{
+
+        public ThisIsNotTriangleException(){
+                super("Такого треугольника не может быть! Одна сторона больше суммы двух других сторон!");
+        }
+}

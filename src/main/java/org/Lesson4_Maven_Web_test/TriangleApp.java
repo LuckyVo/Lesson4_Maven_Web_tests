@@ -3,10 +3,13 @@ package org.Lesson4_Maven_Web_test;
 //     S=sqrt(p(p-a)(p-b)(p-c)), где a,b,c - стороны, а р- полупериметр
 
 
+import org.apache.commons.math3.util.Precision;
+
 public class TriangleApp {
 
     public static Double getSquare (int a, int b, int c) throws TriangleSideNullException, TriangleSideLessZeroException, ThisIsNotTriangleException {
         Integer p = (a + b + c) / 2;
+        Double s = 0.0;
         if (a == 0 || b == 0 || c == 0)  {
             throw new TriangleSideNullException();
         } else if (a < 0 || b < 0 || c < 0) {
@@ -14,8 +17,9 @@ public class TriangleApp {
         } else if ( a + b < c || a + c < b || b + c < a){
             throw new ThisIsNotTriangleException();
         } else {
-            Double s = Math.sqrt(p * (p - a) * (p - b) * (p - c));
-            return s;
+            return Precision.round(s = Math.sqrt(p * (p - a) * (p - b) * (p - c)), 2);
         }
     }
+
+
 }

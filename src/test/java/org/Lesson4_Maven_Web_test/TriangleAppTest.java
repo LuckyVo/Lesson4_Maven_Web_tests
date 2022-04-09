@@ -15,7 +15,7 @@ public class TriangleAppTest{
     private static Logger logger = LoggerFactory.getLogger("Unit test's");
 
     @ParameterizedTest
-    @CsvSource({ "7,8,9,26.832815729997478","3,4,5,6.0","5,6,7,14.696938456699069"})
+    @CsvSource({ "7,8,9,26.83","3,4,5,6.00","5,6,7,14.69"})
     @DisplayName("Тест на проверку подсчёта площади треугольника по трём сторонам.")
     void testSurfaceTriangle(int a, int b, int c, double result) throws TriangleSideNullException, TriangleSideLessZeroException, ThisIsNotTriangleException {
         logger.info("Тест на проверку подсчёта площади треугольника по трём сторонам.");
